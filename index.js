@@ -111,18 +111,18 @@ client.on('messageCreate', async (message) => {
 * Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:`;
 
         try {
-            // 1. Supprime instantanément le message de l'utilisateur
-            await message.delete().catch(() => {});
+            // NOTE : On NE touche PAS à ton message (pas de message.delete ici)
 
-            // 2. Récupère l'historique récent et supprime TOUS les messages du bot présents dans ce salon pour repartir sur une base propre
-            const messages = await message.channel.messages.fetch({ limit: 50 });
+            // Récupère les messages récents et filtre *uniquement* les messages du bot
+            const messages = await message.channel.messages.fetch({ limit: 20 });
             const botMessages = messages.filter(msg => msg.author.id === client.user.id);
 
+            // Supprime uniquement les anciens messages du bot
             for (const [, botMsg] of botMessages) {
                 await botMsg.delete().catch(() => {});
             }
 
-            // 3. Envoie le message unique mis à jour
+            // Envoie le nouveau message unique du bot
             await message.channel.send({ content: boosterContent });
         } catch (err) {
             console.error('[BOT] Erreur lors de la gestion du salon booster :', err);
