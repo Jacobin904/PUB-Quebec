@@ -12,6 +12,7 @@ const client = new Client({
 const CHANNEL_ID = '1529282301891051620';
 const CATEGORY_ID = '1529294134425423942';
 const STAFF_ROLE_ID = '1529294257402151073';
+const EMBED_COLOR = 0x2A13A8;
 
 client.once('ready', () => {
     console.log(`Connecté en tant que ${client.user.tag} !`);
@@ -34,7 +35,7 @@ client.on('messageCreate', async (message) => {
         const embed = new EmbedBuilder()
             .setTitle('🎫 Support - PUB Québec')
             .setDescription('Besoin d\'aide ou une question ? Cliquez sur le bouton ci-dessous pour ouvrir un ticket avec notre équipe.')
-            .setColor(0x2b2d31);
+            .setColor(EMBED_COLOR);
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -51,10 +52,11 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// Gestionnaire de l'interaction du bouton pour créer le salon de ticket
+// Gestionnaire des interactions des boutons
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isButton()) return;
 
+    // 1. Ouverture du ticket
     if (interaction.customId === 'open_ticket') {
         const guild = interaction.guild;
         const user = interaction.user;
@@ -86,14 +88,40 @@ client.on('interactionCreate', async (interaction) => {
             const welcomeEmbed = new EmbedBuilder()
                 .setTitle(`Ticket de ${user.username}`)
                 .setDescription('Un membre de l\'équipe du staff va vous prendre en charge rapidement.\nDécrivez votre problème ci-dessous.')
-                .setColor(0x00ae86);
+                .setColor(EMBED_COLOR);
 
-            await ticketChannel.send({ content: `<@${user.id}> | <@&${STAFF_ROLE_ID}>`, embeds: [welcomeEmbed] });
+            const closeRow = new ActionRowBuilder().addComponents(
+                new ButtonBuilder()
+                    .setCustomId('close_ticket')
+                    .setLabel('Fermer le ticket')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔒')
+            );
+
+            await ticketChannel.send({ 
+                content: `<@${user.id}> | <@&${STAFF_ROLE_ID}>`, 
+                embeds: [welcomeEmbed], 
+                components: [closeRow] 
+            });
 
             await interaction.editReply({ content: `Votre ticket a été créé avec succès : <#${ticketChannel.id}>` });
         } catch (error) {
             console.error('Erreur lors de la création du ticket :', error);
             await interaction.editReply({ content: 'Une erreur est survenue lors de la création de votre ticket.' });
+        }
+    }
+
+    // 2. Fermeture du ticket
+    if (interaction.customId === 'close_ticket') {
+        try {
+            await interaction.reply({ content: 'Fermeture du ticket en cours...', ephemeral: true });
+            
+            // Supprime le salon après un court délai
+            setTimeout(async () => {
+                await interaction.channel.delete().catch(() => {});
+            }, 3000);
+        } catch (error) {
+            console.error('Erreur lors de la fermeture du ticket :', error);
         }
     }
 });
