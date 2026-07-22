@@ -1,0 +1,12 @@
+{
+  "name": "pub-quebec-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord PUB Québec",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.0"
+  }
+}
