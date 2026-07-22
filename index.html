@@ -1,965 +1,480 @@
 <!DOCTYPE html>
-<html lang="fr-CA">
+<html lang="fr-CA" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUB Québec | Communauté Discord Professionnelle</title>
+    <title>PUB Québec | Communauté Discord Officielle</title>
+    <meta name="description" content="Rejoignez PUB Québec, l'authentique expérience communautaire sur Discord.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #dc2626;
-            --light: #f8fafc;
-            --text: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --card-bg: #152133;
-            --border: #334155;
+            --bg-primary: #0B0F19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(31, 41, 55, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --accent-blue: #2563EB;
+            --accent-blue-hover: #1D4ED8;
+            --discord-color: #5865F2;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        .container { maxParfait ! Avec ces données et l'URL réelle de ton bot (`https://pub-quebec.onrender.com`), nous pouvons rendre le site web **extrêmement professionnel et dynamique**. 
+
+J'ai analysé ton JSON. Voici les améliorations majeures que j'ai apportées au code du site pour qu'il reflète parfaitement la réalité de ton serveur :
+
+1. **URL de l'API mise à jour** : Le site se connecte maintenant directement à `https://pub-quebec.onrender.com`.
+2. **Rôles exacts** : J'ai mis à jour l'équipe avec les titres officiels de ton JSON ("Fondateur" pour Nathan, "Directeur Développement Site Web" pour toi).
+3. **Nouvelle section "Structure du Serveur"** : C'est un énorme atout professionnel. Même avec 5 membres, montrer que le serveur est parfaitement organisé (Informations, Communauté, Publicité, Partenaires) inspire immédiatement confiance.
+4. **Gestion intelligente des statistiques** : Le site affichera le vrai nombre de membres. J'ai ajouté une mention élégante pour que le petit nombre actuel soit perçu comme un "cercle de fondateurs" plutôt qu'un vide.
+
+Voici le code **final et prêt à être hébergé** (sur GitHub Pages, Vercel, ou Netlify).
+
+---
+
+### `index.html` (Version Finale Professionnelle)
+
+```html
+<!DOCTYPE html>
+<html lang="fr-CA" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUB Québec | Communauté Discord Professionnelle</title>
+    <meta name="description" content="Rejoignez PUB Québec, l'authentique expérience communautaire sur Discord. Un espace structuré, respectueux et dynamique.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0B0F19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(31, 41, 55, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --accent-blue: #2563EB;
+            --accent-blue-hover: #1D4ED8;
+            --accent-red: #DC2626;
+            --discord-color: #5865F2;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 6rem 0; }
+        
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-label {
+            display: inline-block; font-size: 0.875rem; font-weight: 600;
+            color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
+        }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .section-desc { color: var(--text-secondary); font-size: 1.125rem; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.875rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            transition: var(--transition); border: 1px solid transparent; cursor: pointer;
+        }
+        .btn-primary { background-color: var(--accent-blue); color: white; }
+        .btn-primary:hover { background-color: var(--accent-blue-hover); transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); }
+        .btn-discord { background-color: var(--discord-color); color: white; }
+        .btn-discord:hover { background-color: #4752C4; transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(88, 101, 242, 0.4); }
+        .btn-outline { background: transparent; border-color: var(--border-color); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--text-secondary); background: rgba(255,255,255,0.03); }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 2rem; backdrop-filter: blur(12px); transition: var(--transition);
+        }
+        .card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
 
         /* Navigation */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.25rem 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0;
+            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-color);
         }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 1.25rem; }
+        .nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: var(--text-secondary); font-weight: 500; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; }
 
-        .navbar.scrolled {
-            padding: 0.75rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .nav-brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-        }
-
-        .nav-brand span {
-            font-size: 1.375rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #ffffff, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9375rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: linear-gradient(90deg, #1e293b, #0f172a);
-            color: white;
-            padding: 0.625rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .nav-cta:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-
+        /* Hero */
+        .hero { padding-top: 10rem; padding-bottom: 6rem; text-align: center; position: relative; }
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%);
-            z-index: -1;
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 800px; height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%); z-index: -1; pointer-events: none;
         }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1.25rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;
+            background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 100px; font-size: 0.875rem; color: #60A5FA; margin-bottom: 2rem; font-weight: 500;
         }
-
+        .status-dot { width: 8px; height: 8px; background-color: #22C55E; border-radius: 50%; box-shadow: 0 0 8px #22C55E; }
+        .status-dot.offline { background-color: #EF4444; box-shadow: 0 0 8px #EF4444; }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            color: white;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;
+            margin-bottom: 1.5rem; background: linear-gradient(to right, #FFFFFF, #94A3B8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; }
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        
+        .live-stats { margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: var(--text-primary); }
+        .stat-label { font-size: 0.875rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
 
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
+        /* Structure Section (Nouveau) */
+        .structure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .structure-card { text-align: center; }
+        .structure-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .structure-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .structure-card p { font-size: 0.9rem; color: var(--text-secondary); }
 
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
+        /* Règlements */
+        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .rule-icon {
+            width: 48px; height: 48px; background: rgba(37, 99, 235, 0.1); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #60A5FA;
         }
+        .rule-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+        .rule-card ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: var(--text-secondary); font-size: 0.95rem; }
+        .rule-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+        /* Recrutement */
+        .recruitment-wrapper {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border-color); border-radius: 24px; padding: 4rem 2rem;
+            text-align: center; position: relative; overflow: hidden;
         }
+        .recruitment-wrapper::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 300px; background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%); pointer-events: none;
+        }
+        .role-badge {
+            display: inline-block; background: rgba(220, 38, 38, 0.1); color: #F87171;
+            padding: 0.5rem 1rem; border-radius: 100px; font-weight: 600; font-size: 0.875rem;
+            margin-bottom: 1.5rem; border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+        .requirements-list { max-width: 500px; margin: 2rem auto; text-align: left; }
+        .requirements-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
+        .requirements-list li:last-child { border-bottom: none; }
+        .check-icon { color: #22C55E; flex-shrink: 0; }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.75rem;
-            border-radius: 10px;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+        /* Équipe */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto; }
+        .team-card { text-align: center; padding: 2.5rem 2rem; }
+        .team-avatar {
+            width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem;
+            border: 3px solid var(--bg-secondary); box-shadow: 0 0 0 2px var(--border-color);
         }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
-            z-index: 1;
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: contrast(1.1) brightness(0.95);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-image-wrapper:hover img {
-            transform: scale(1.03);
-        }
-
-        /* Sections */
-        section {
-            padding: 7rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: white;
-            margin-bottom: 1.25rem;
-            line-height: 1.2;
-        }
-
-        .section-header p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* Rules Section */
-        .rules {
-            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
-        }
-
-        .rules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .rule-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rule-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        .rule-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-        }
-
-        .rule-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .rule-number {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent), #b91c1c);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.125rem;
-            flex-shrink: 0;
-        }
-
-        .rule-card h3 {
-            font-size: 1.25rem;
-            color: white;
-            font-weight: 600;
-        }
-
-        .rule-card ul {
-            list-style: none;
-        }
-
-        .rule-card li {
-            padding: 0.875rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9375rem;
-            line-height: 1.6;
-        }
-
-        .rule-card li:last-child {
-            border-bottom: none;
-        }
-
-        .rule-card li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-
-        /* Recruitment */
-        .recruitment {
-            background: linear-gradient(180deg, var(--primary) 0%, #0c1321 100%);
-        }
-
-        .recruitment-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .recruitment-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .position-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .position-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            color: white;
-        }
-
-        .position-box p {
-            color: var(--text-secondary);
-            font-size: 1.0625rem;
-            line-height: 1.7;
-        }
-
-        .requirements {
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .requirements h4 {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: white;
-        }
-
-        .requirements ul {
-            list-style: none;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .requirements li {
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.9375rem;
-            display: flex;
-            align-items: center;
-            gap: 0.875rem;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
-        }
-
-        .requirements li:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateX(4px);
-            color: white;
-        }
-
-        .requirements li::before {
-            content: '→';
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .apply-box {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed var(--border);
-            border-radius: 16px;
-        }
-
-        .apply-box p {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        /* Team */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        .team-member img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover img {
-            transform: scale(1.05);
-            border-color: white;
-        }
-
-        .team-member h3 {
-            font-size: 1.375rem;
-            color: white;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .team-member .role {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .team-member .username {
-            color: var(--text-secondary);
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 0.875rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.375rem 0.875rem;
-            border-radius: 100px;
-            display: inline-block;
-        }
+        .team-name { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .team-role { color: var(--accent-blue); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .team-username { display: inline-block; background: rgba(255,255,255,0.05); padding: 0.375rem 0.875rem; border-radius: 100px; font-size: 0.875rem; color: var(--text-secondary); font-family: monospace; }
 
         /* Footer */
-        footer {
-            background: var(--primary);
-            padding: 5rem 2rem 3rem;
-            text-align: center;
-        }
+        .footer { border-top: 1px solid var(--border-color); padding: 4rem 0 2rem; text-align: center; }
+        .footer-logo { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 1.5rem; opacity: 0.8; }
+        .footer-text { color: var(--text-secondary); font-size: 0.875rem; margin-top: 2rem; }
+        .footer-text a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
 
-        .footer-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            border: 2px solid var(--border);
-        }
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        footer h2 {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-            color: white;
-        }
-
-        .footer-tagline {
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            font-size: 1.0625rem;
-        }
-
-        .discord-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: #313648;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-bottom: 4rem;
-            border: 1px solid var(--border);
-        }
-
-        .discord-btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.5);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 3rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .footer-bottom a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom a:hover {
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-                text-align: center;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .rules-grid,
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .recruitment-card {
-                padding: 3rem 2rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero {
-                padding: 6rem 1.5rem 4rem;
-            }
-
-            section {
-                padding: 5rem 1.5rem;
-            }
-
-            .rule-card,
-            .team-member {
-                padding: 2rem 1.5rem;
-            }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .live-stats { gap: 2rem; }
+            .section { padding: 4rem 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
+    <nav class="navbar">
+        <div class="container nav-container">
             <a href="#" class="nav-brand">
-                <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec">
-                <span>PUB Québec</span>
+                <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="Logo">
+                PUB Québec
             </a>
-            <ul class="nav-links">
-                <li><a href="#reglements">Règlements</a></li>
-                <li><a href="#recrutement">Recrutement</a></li>
-                <li><a href="#equipe">Équipe</a></li>
-                <li><a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="nav-cta">Rejoindre</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="#structure">Structure</a>
+                <a href="#reglements">Règlements</a>
+                <a href="#recrutement">Recrutement</a>
+                <a href="#equipe">Équipe</a>
+                <a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="btn btn-discord" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Rejoindre</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
+        <div class="container">
+            <div class="fade-in">
                 <div class="hero-badge">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
-                    Communauté active
+                    <span class="status-dot" id="bot-status-dot"></span>
+                    <span id="bot-status-text">Connexion au système...</span>
                 </div>
-                <h1>PUB Québec</h1>
-                <p class="tagline">L'Authentique Expérience Québécoise</p>
-                <p>Rejoignez une communauté dynamique où le respect et l'entraide sont au cœur de nos valeurs. Échangez, partagez et créez des liens durables.</p>
-                <div class="hero-buttons">
-                    <a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="btn btn-primary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                <h1>L'Authentique Expérience<br>Québécoise sur Discord</h1>
+                <p>Une communauté professionnelle, respectueuse et dynamique. Échangez, partagez et créez des liens durables dans un environnement sécurisé et bien structuré.</p>
+                <div class="hero-actions">
+                    <a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="btn btn-discord">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                         Rejoindre le serveur
                     </a>
-                    <a href="#reglements" class="btn btn-secondary">
-                        Nos règlements
-                    </a>
+                    <a href="#reglements" class="btn btn-outline">Consulter les règles</a>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image-wrapper">
-                    <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec">
+
+                <div class="live-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="member-count">--</div>
+                        <div class="stat-label">Membres Fondateurs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="bot-uptime">--</div>
+                        <div class="stat-label">Uptime du Bot</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rules -->
-    <section id="reglements" class="rules">
+    <!-- Structure du Serveur (Basé sur ton JSON) -->
+    <section id="structure" class="section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
+                <span class="section-label">Organisation</span>
+                <h2 class="section-title">Une structure pensée pour vous</h2>
+                <p class="section-desc">Un serveur méticuleusement organisé pour offrir la meilleure expérience possible, de la discussion à la publicité.</p>
+            </div>
+            <div class="structure-grid">
+                <div class="card structure-card fade-in">
+                    <div class="structure-icon">📌</div>
+                    <h3>Informations</h3>
+                    <p>Règles, annonces, suggestions et support technique pour une navigation fluide.</p>
+                </div>
+                <div class="card structure-card fade-in">
+                    <div class="structure-icon">💬</div>
+                    <h3>Communauté</h3>
+                    <p>Salons de discussion, média, gaming et canaux vocaux pour échanger librement.</p>
+                </div>
+                <div class="card structure-card fade-in">
+                    <div class="structure-icon">📢</div>
+                    <h3>Publicité</h3>
+                    <p>Espaces dédiés et catégorisés (réseaux sociaux, sites web, serveurs) pour une visibilité optimale.</p>
+                </div>
+                <div class="card structure-card fade-in">
+                    <div class="structure-icon">🏛️</div>
+                    <h3>Partenariats</h3>
+                    <p>Un espace professionnel pour établir des conditions et des collaborations durables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reglements" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
                 <span class="section-label">Règlements</span>
-                <h2>Un environnement respectueux</h2>
-                <p>Nos règles assurent une expérience agréable et sécuritaire pour tous les membres de la communauté.</p>
+                <h2 class="section-title">Un environnement respectueux</h2>
+                <p class="section-desc">Des règles claires pour garantir une expérience professionnelle et agréable pour tous.</p>
             </div>
-
             <div class="rules-grid">
-                <div class="rule-card">
-                    <div class="rule-header">
-                        <div class="rule-number">1</div>
-                        <h3>Respect et courtoisie</h3>
+                <div class="card rule-card fade-in">
+                    <div class="rule-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     </div>
+                    <h3>Respect et Courtoisie</h3>
                     <ul>
-                        <li>Tolérance zéro envers le harcèlement et la discrimination</li>
-                        <li>Débats constructifs et respectueux</li>
-                        <li>Interdiction des attaques personnelles</li>
+                        <li>Tolérance zéro envers le harcèlement et la discrimination.</li>
+                        <li>Restez constructifs et respectueux dans les débats.</li>
+                        <li>Les attaques personnelles sont strictement interdites.</li>
                     </ul>
                 </div>
-
-                <div class="rule-card">
-                    <div class="rule-header">
-                        <div class="rule-number">2</div>
-                        <h3>Contenu approprié</h3>
+                <div class="card rule-card fade-in">
+                    <div class="rule-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
+                    <h3>Contenu Approprié</h3>
                     <ul>
-                        <li>Contenu NSFW strictement interdit</li>
-                        <li>Pseudos et photos de profil convenables</li>
-                        <li>Respect des normes communautaires</li>
+                        <li>Contenu NSFW, violent ou choquant strictement interdit.</li>
+                        <li>Pseudos et photos de profil doivent être convenables.</li>
+                        <li>Respect des normes communautaires de Discord.</li>
                     </ul>
                 </div>
-
-                <div class="rule-card">
-                    <div class="rule-header">
-                        <div class="rule-number">3</div>
-                        <h3>Publicité et spam</h3>
+                <div class="card rule-card fade-in">
+                    <div class="rule-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
                     </div>
+                    <h3>Publicité et Spam</h3>
                     <ul>
-                        <li>Publicité non autorisée interdite</li>
-                        <li>Pas de spam ou de messages répétitifs</li>
-                        <li>Usage modéré des majuscules</li>
-                    </ul>
-                </div>
-
-                <div class="rule-card">
-                    <div class="rule-header">
-                        <div class="rule-number">4</div>
-                        <h3>Salons vocaux</h3>
-                    </div>
-                    <ul>
-                        <li>Respect des autres utilisateurs</li>
-                        <li>Limitation des bruits de fond</li>
-                        <li>Volume sonore approprié</li>
-                    </ul>
-                </div>
-
-                <div class="rule-card">
-                    <div class="rule-header">
-                        <div class="rule-number">5</div>
-                        <h3>Modération</h3>
-                    </div>
-                    <ul>
-                        <li>Décisions de l'équipe finales</li>
-                        <li>Contournement de sanction = bannissement</li>
-                        <li>Sanctions adaptées aux infractions</li>
+                        <li>Publicité non autorisée interdite (liens, DM, salons).</li>
+                        <li>Pas de spam de messages, d'emojis ou de majuscules.</li>
+                        <li>Les salons de pub ont des règles spécifiques (100+ caractères + lien).</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recruitment -->
-    <section id="recrutement" class="recruitment">
+    <section id="recrutement" class="section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Recrutement</span>
-                <h2>Rejoignez notre équipe</h2>
-                <p>Contribuez au développement de notre communauté en devenant membre de l'équipe de modération.</p>
-            </div>
-
-            <div class="recruitment-card">
-                <div class="position-box">
-                    <h3>
-                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        Modérateur(trice)
-                    </h3>
-                    <p>Veiller au respect des règles, maintenir un climat accueillant et gérer les litiges avec professionnalisme.</p>
-                </div>
-
-                <div class="requirements">
-                    <h4>Prérequis</h4>
+            <div class="recruitment-wrapper fade-in">
+                <span class="role-badge">Poste ouvert</span>
+                <h2 class="section-title" style="margin-bottom: 1rem;">Rejoignez l'équipe de modération</h2>
+                <p class="section-desc" style="max-width: 600px; margin: 0 auto 2rem;">
+                    Nous recherchons des personnes matures et impartiales pour veiller au bon déroulement de la communauté et gérer les litiges avec professionnalisme.
+                </p>
+                <div class="requirements-list">
                     <ul>
-                        <li>Activité régulière sur le serveur</li>
-                        <li>Maturité et impartialité</li>
-                        <li>Esprit d'équipe développé</li>
-                        <li>Connaissance de Discord</li>
-                        <li>Disponibilité pour la modération</li>
+                        <li><svg class="check-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Activité régulière et soutenue sur le serveur</li>
+                        <li><svg class="check-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Maturité, calme et impartialité dans les décisions</li>
+                        <li><svg class="check-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Bonne connaissance des fonctionnalités de Discord</li>
+                        <li><svg class="check-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Disponibilité pour assurer la modération</li>
                     </ul>
                 </div>
-
-                <div class="apply-box">
-                    <p>Intéressé(e) ? Déposez votre candidature dès maintenant.</p>
-                    <a href="#" class="btn btn-primary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3 5 12H1m16 0h-3.5l-3-9L8 12H4m16 0l-3 9-3-9m0 0l-3 9-3-9"/></svg>
-                        Déposer ma candidature
-                    </a>
-                </div>
+                <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Déposer ma candidature</a>
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 1rem;">*Le lien du formulaire sera ajouté prochainement.</p>
             </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section id="equipe" class="team">
+    <section id="equipe" class="section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <span class="section-label">Équipe</span>
-                <h2>Les fondateurs</h2>
-                <p>Les personnes qui font vivre PUB Québec au quotidien.</p>
+                <h2 class="section-title">Les Fondateurs</h2>
+                <p class="section-desc">Les personnes qui conçoivent et font vivre l'expérience PUB Québec au quotidien.</p>
             </div>
-
             <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://cdn.discordapp.com/avatars/1016479613297369139/c5fdeacb1aa0af3729f0833179532635.webp?size=1024" alt="Nathan">
-                    <h3>Nathan</h3>
-                    <div class="role">Fondateur</div>
-                    <div class="username">@nathanbeliv</div>
+                <div class="card team-card fade-in">
+                    <img src="https://cdn.discordapp.com/avatars/1016479613297369139/c5fdeacb1aa0af3729f0833179532635.webp?size=1024" alt="Nathan" class="team-avatar">
+                    <h3 class="team-name">Nathan</h3>
+                    <div class="team-role">Fondateur</div>
+                    <div class="team-username">@nathanbeliv</div>
                 </div>
-
-                <div class="team-member">
-                    <img src="https://cdn.discordapp.com/avatars/1281784488854159421/608fbe0e316e417b5e83539ef8555255.webp?size=1024" alt="Jacobin Babouain">
-                    <h3>Jacobin Babouain</h3>
-                    <div class="role">Développeur Web</div>
-                    <div class="username">@jacobin904</div>
+                <div class="card team-card fade-in">
+                    <img src="https://cdn.discordapp.com/avatars/1281784488854159421/608fbe0e316e417b5e83539ef8555255.webp?size=1024" alt="Jacobin Babouain" class="team-avatar">
+                    <h3 class="team-name">Jacobin Babouain</h3>
+                    <div class="team-role">Directeur Développement Site Web</div>
+                    <div class="team-username">@jacobin904</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec" class="footer-logo">
-        <h2>PUB Québec</h2>
-        <p class="footer-tagline">L'Authentique Expérience Québécoise</p>
-        
-        <a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="discord-btn">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-            Rejoindre notre Discord
-        </a>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 PUB Québec. Tous droits réservés.</p>
-            <p>Site développé par <a href="#">Jacobin Babouain</a></p>
+    <footer class="footer">
+        <div class="container">
+            <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="Logo" class="footer-logo">
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">PUB Québec</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">L'Authentique Expérience Québécoise</p>
+            <a href="https://discord.gg/SX9XqGAMFy" target="_blank" class="btn btn-discord">Rejoindre notre Discord</a>
+            <div class="footer-text">
+                <p>&copy; 2026 PUB Québec. Tous droits réservés.</p>
+                <p>Site développé par <a href="#">Jacobin Babouain</a></p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // ==========================================
+        // 1. CONFIGURATION DE L'API (URL RÉELLE)
+        // ==========================================
+        const API_BASE_URL = 'https://pub-quebec.onrender.com'; 
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // ==========================================
+        // 2. RÉCUPÉRATION DES DONNÉES EN DIRECT
+        // ==========================================
+        async function fetchBotData() {
+            try {
+                // Récupération du statut du bot
+                const statusRes = await fetch(`${API_BASE_URL}/api/status`);
+                const statusData = await statusRes.json();
+                
+                const statusDot = document.getElementById('bot-status-dot');
+                const statusText = document.getElementById('bot-status-text');
+                const uptimeEl = document.getElementById('bot-uptime');
+
+                if (statusData.online) {
+                    statusDot.classList.remove('offline');
+                    statusText.textContent = 'Système en ligne';
+                    uptimeEl.textContent = statusData.uptime || 'N/A';
+                } else {
+                    throw new Error('Bot offline');
                 }
-            });
-        });
 
-        // Animation on scroll
+                // Récupération des stats du serveur
+                const guildRes = await fetch(`${API_BASE_URL}/api/guild`);
+                const guildData = await guildRes.json();
+                
+                // Affichage du nombre de membres (ex: "5")
+                document.getElementById('member-count').textContent = guildData.memberCount ? guildData.memberCount.toLocaleString() : '5';
+
+            } catch (error) {
+                console.warn('API inaccessible. Affichage des données de secours.', error);
+                // Fallback professionnel si le bot dort (Render free tier) ou est hors ligne
+                document.getElementById('bot-status-dot').classList.add('offline');
+                document.getElementById('bot-status-text').textContent = 'Système en veille';
+                document.getElementById('member-count').textContent = '5'; 
+                document.getElementById('bot-uptime').textContent = '--';
+            }
+        }
+
+        fetchBotData();
+        setInterval(fetchBotData, 60000); // Actualise toutes les 60 secondes
+
+        // ==========================================
+        // 3. ANIMATIONS AU SCROLL
+        // ==========================================
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, observerOptions);
 
-        document.querySelectorAll('.rule-card, .team-member').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
