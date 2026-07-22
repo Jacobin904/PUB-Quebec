@@ -30,7 +30,7 @@ client.once('ready', () => {
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    // 1. Commande !id pour lister les salons et les rôles
+    // 1. Commande !id pour lister les salons (par catégorie) et les rôles triés
     if (message.content === '!id') {
         if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
             return message.reply({ content: "Vous n'avez pas la permission d'utiliser cette commande.", ephemeral: true });
@@ -40,17 +40,44 @@ client.on('messageCreate', async (message) => {
 
         const guild = message.guild;
 
-        // Récupère tous les salons
-        const channels = guild.channels.cache.map(c => `• **${c.name}** : \`${c.id}\``).join('\n') || 'Aucun salon';
-        
-        // Récupère tous les rôles
-        const roles = guild.roles.cache.map(r => `• **${r.name}** : \`${r.id}\``).join('\n') || 'Aucun rôle';
+        // Structure les salons par catégorie de manière propre
+        const categories = guild.channels.cache.filter(c => c.type === 4).sort((a, b) => a.rawPosition - b.rawPosition);
+        const uncategorized = guild.channels.cache.filter(c => c.type !== 4 && !c.parentId).sort((a, b) => a.rawPosition - b.rawPosition);
 
-        // Envoi par message privé (DM) pour éviter de spammer le salon car la liste peut être longue
+        let channelsText = '';
+
+        if (uncategorized.size > 0) {
+            channelsText += `**📁 Salons sans catégorie**\n`;
+            uncategorized.forEach(c => {
+                channelsText += `• ${c.name} : \`${c.id}\`\n`;
+            });
+            channelsText += `\n`;
+        }
+
+        categories.forEach(category => {
+            channelsText += `**📂 ${category.name}** : \`${category.id}\`\n`;
+            const children = guild.channels.cache
+                .filter(c => c.parentId === category.id)
+                .sort((a, b) => a.rawPosition - b.rawPosition);
+            
+            children.forEach(child => {
+                channelsText += `&nbsp;&nbsp;&nbsp;&nbsp;• ${child.name} : \`${child.id}\`\n`;
+            });
+            channelsText += `\n`;
+        });
+
+        if (!channelsText) channelsText = 'Aucun salon';
+
+        // Trie les rôles du plus haut au plus bas selon la hiérarchie Discord
+        const roles = guild.roles.cache
+            .sort((a, b) => b.position - a.position)
+            .map(r => `• **${r.name}** : \`${r.id}\``)
+            .join('\n') || 'Aucun rôle';
+
         try {
             const embedChannels = new EmbedBuilder()
                 .setTitle('📋 Liste des Salons - PUB Québec')
-                .setDescription(channels.length > 4096 ? channels.substring(0, 4093) + '...' : channels)
+                .setDescription(channelsText.length > 4096 ? channelsText.substring(0, 4093) + '...' : channelsText)
                 .setColor(EMBED_COLOR);
 
             const embedRoles = new EmbedBuilder()
@@ -59,7 +86,7 @@ client.on('messageCreate', async (message) => {
                 .setColor(EMBED_COLOR);
 
             await message.author.send({ embeds: [embedChannels, embedRoles] });
-            return message.channel.send({ content: "Les listes des ID des salons et rôles vous ont été envoyées en message privé !", ephemeral: true }).then(msg => {
+            return message.channel.send({ content: "Les listes des ID des salons et rôles vous ont été envoyées en message privé !" }).then(msg => {
                 setTimeout(() => msg.delete().catch(() => {}), 5000);
             });
         } catch (err) {
