@@ -14,6 +14,15 @@ const CATEGORY_ID = '1529294134425423942';
 const STAFF_ROLE_ID = '1529294257402151073';
 const EMBED_COLOR = 0x2A13A8;
 
+// Gestion des erreurs globales pour éviter les crashs silencieux
+client.on('error', (error) => {
+    console.error('Erreur du client Discord :', error);
+});
+
+process.on('unhandledRejection', error => {
+    console.error('Erreur non gérée (Promise Rejection) :', error);
+});
+
 client.once('ready', () => {
     console.log(`Connecté en tant que ${client.user.tag} !`);
 });
@@ -32,6 +41,9 @@ client.on('messageCreate', async (message) => {
             return message.reply({ content: `Cette commande doit être exécutée dans le salon <#${CHANNEL_ID}>.`, ephemeral: true });
         }
 
+        // Supprime immédiatement le message pour éviter les envois en double
+        await message.delete().catch(() => {});
+
         const embed = new EmbedBuilder()
             .setTitle('🎫 Support - PUB Québec')
             .setDescription('Besoin d\'aide ou une question ? Cliquez sur le bouton ci-dessous pour ouvrir un ticket avec notre équipe.')
@@ -44,9 +56,6 @@ client.on('messageCreate', async (message) => {
                 .setStyle(ButtonStyle.Primary)
                 .setEmoji('🎫')
         );
-
-        // Supprime le message de la commande pour garder le salon propre
-        await message.delete().catch(() => {});
 
         return message.channel.send({ embeds: [embed], components: [row] });
     }
