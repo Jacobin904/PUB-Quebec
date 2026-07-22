@@ -63,7 +63,8 @@ const CONFIG = {
     CATEGORY_ID: '1529294134425423942',
     STAFF_ROLE_ID: '1529294257402151073',
     EMBED_COLOR: 0x2A13A8,
-    AD_CATEGORIES: ['1529282315228811434', '1529282335227379815']
+    AD_CATEGORIES: ['1529282315228811434', '1529282335227379815'],
+    BOOSTER_INFO_CHANNEL_ID: '1529505071224852621'
 };
 
 // Gestion des erreurs
@@ -75,7 +76,7 @@ client.once('ready', () => {
 });
 
 // ==========================================
-// 3. LOGIQUE DU BOT (Messages, Départ & Tickets)
+// 3. LOGIQUE DU BOT (Messages, Départ, Boosters & Tickets)
 // ==========================================
 
 // Suppression automatique des messages de pub si l'utilisateur quitte le serveur
@@ -107,6 +108,38 @@ client.on('guildMemberRemove', async (member) => {
 
 client.on('messageCreate', async (message) => {
     if (message.author.bot || !message.guild) return;
+
+    // Gestion du salon d'information Booster (supprime l'ancien message du bot et en renvoie un nouveau)
+    if (message.channel.id === CONFIG.BOOSTER_INFO_CHANNEL_ID) {
+        // Supprime le message envoyé par l'utilisateur
+        await message.delete().catch(() => {});
+
+        // Texte des avantages booster demandé
+        const boosterContent = `__## **Avantages Booster**__
+
+* Salon ou un bot envoie ta pub
+* Rôle personnalisé (Doit être accepté par le staff)
+* Accès à un salon textuel et vocal exclusif réservé aux soutiens du serveur :lock:
+* Possibilité d'ajouter un émoji personnalisé de ton choix sur le serveur :sparkles:
+* Immunité contre certains ralentissements (*slowmode*) dans les salons textuels :zap:
+* Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:`;
+
+        try {
+            // Récupère l'historique du salon pour trouver et supprimer les anciens messages du bot
+            const fetchedMessages = await message.channel.messages.fetch({ limit: 50 });
+            const botMessages = fetchedMessages.filter(msg => msg.author.id === client.user.id);
+            
+            for (const [msgId, botMsg] of botMessages) {
+                await botMsg.delete().catch(() => {});
+            }
+
+            // Envoie le nouveau message mis à jour
+            await message.channel.send({ content: boosterContent });
+        } catch (err) {
+            console.error('[BOT] Erreur lors de la gestion du salon booster :', err);
+        }
+        return;
+    }
 
     // 1. Vérification des règles de publicité
     if (message.channel.parentId && CONFIG.AD_CATEGORIES.includes(message.channel.parentId)) {
