@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUB Québec - L'Authentique Expérience Québécoise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bleu-quebec: #003399;
+            --bleu-fonce: #001a4d;
+            --rouge: #cc0000;
+            --blanc: #ffffff;
+            --argent: #c0c0c0;
+            --gris-fonce: #1a1a2e;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--gris-fonce) 0%, #16213e 100%);
+            color: var(--blanc);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 26, 77, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--rouge);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--argent);
+        }
+
+        .nav-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--blanc) 0%, var(--argent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--rouge);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rouge);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--bleu-fonce) 0%, var(--bleu-quebec) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--rouge);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--blanc) 0%, var(--argent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--argent);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rouge) 0%, #990000 100%);
+            color: var(--blanc);
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--blanc);
+            border: 2px solid var(--blanc);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blanc);
+            color: var(--bleu-fonce);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rouge), var(--bleu-quebec));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Rules Section */
+        .rules {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rule-category {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0,51,153,0.2) 0%, rgba(0,26,77,0.3) 100%);
+            border-radius: 15px;
+            border-left: 5px solid var(--rouge);
+        }
+
+        .rule-category h3 {
+            color: var(--rouge);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .rule-category ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .rule-category li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .rule-category li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--rouge);
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(204,0,0,0.2) 0%, rgba(153,0,0,0.3) 100%);
+            border: 2px solid var(--rouge);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* Recruitment Section */
+        .recruitment {
+            background: linear-gradient(135deg, rgba(0,51,153,0.2) 0%, rgba(0,26,77,0.3) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem auto;
+            border: 2px solid var(--bleu-quebec);
+        }
+
+        .positions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .position-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--rouge);
+            box-shadow: 0 10px 30px rgba(204,0,0,0.2);
+        }
+
+        .position-card h3 {
+            color: var(--rouge);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .requirements {
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .requirements h4 {
+            margin-bottom: 1rem;
+            color: var(--argent);
+        }
+
+        .apply-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--bleu-quebec) 0%, var(--bleu-fonce) 100%);
+            color: var(--blanc);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: linear-gradient(135deg, var(--rouge) 0%, #990000 100%);
+            transform: scale(1.05);
+        }
+
+        /* Team Section */
+        .team {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: var(--bleu-quebec);
+            box-shadow: 0 15px 40px rgba(0,51,153,0.3);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--bleu-quebec);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--blanc);
+        }
+
+        .team-member .role {
+            color: var(--rouge);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .username {
+            color: var(--argent);
+            font-family: monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bleu-fonce);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--rouge);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            border: 3px solid var(--argent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--bleu-quebec);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanc);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--rouge);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--argent);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .rules, .recruitment {
+                padding: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec Logo">
+                <span>PUB QUÉBEC</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#reglements">Règlements</a></li>
+                <li><a href="#recrutement">Recrutement</a></li>
+                <li><a href="#equipe">Équipe</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec" class="hero-logo">
+            <h1>PUB QUÉBEC</h1>
+            <p class="tagline">L'Authentique Expérience Québécoise</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    <i class="fab fa-discord"></i>
+                    Rejoindre le Serveur
+                </a>
+                <a href="#reglements" class="btn btn-secondary">
+                    <i class="fas fa-book"></i>
+                    Voir les Règlements
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="reglements" class="fade-in">
+        <h2 class="section-title"> Règlements Officiels</h2>
+        
+        <div class="rules">
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+                Bienvenue sur <strong>PUB Québec</strong> ! Pour que la communauté reste agréable, accueillante et sécuritaire pour tout le monde, nous vous demandons de respecter les règles suivantes :
+            </p>
+
+            <div class="rule-category">
+                <h3><i class="fas fa-heart"></i> 1. Respect et Courtoisie</h3>
+                <ul>
+                    <li><strong>Aucune tolérance</strong> envers le harcèlement, les insultes, le racisme, la grossièreté, le sexisme ou toute autre forme de discrimination.</li>
+                    <li>Restez constructifs lors des débats. Les attaques personnelles sont strictement interdites.</li>
+                </ul>
+            </div>
+
+            <div class="rule-category">
+                <h3><i class="fas fa-shield-alt"></i> 2. Contenu Approprié (NSFW)</h3>
+                <ul>
+                    <li>Le partage de contenu à caractère pornographique, violent, gore ou choquant est formellement interdit (textes, images, liens ou vidéos).</li>
+                    <li>Les pseudos et photos de profil doivent également rester corrects et convenables pour tous.</li>
+                </ul>
+            </div>
+
+            <div class="rule-category">
+                <h3><i class="fas fa-ban"></i> 3. Publicité et Spam</h3>
+                <ul>
+                    <li>La publicité non autorisée pour d'autres serveurs Discord, réseaux sociaux, sites web ou services (en messages publics ou privés) est interdite.</li>
+                    <li>Évitez le <em>spam</em> (envoi répété de messages identiques, de émojis ou de majuscules excessives) dans les salons textuels.</li>
+                </ul>
+            </div>
+
+            <div class="rule-category">
+                <h3><i class="fas fa-volume-up"></i> 4. Utilisation des Salons</h3>
+                <ul>
+                    <li>Ne surchargez pas les salons vocaux avec des bruits de fond, de la musique forte ou des cris.</li>
+                </ul>
+            </div>
+
+            <div class="rule-category">
+                <h3><i class="fas fa-gavel"></i> 5. Modération et Sanctions</h3>
+                <ul>
+                    <li>Les décisions des membres de l'équipe de modération sont finales.</li>
+                    <li>Le contournement d'une sanction (par exemple, revenir avec un autre compte après un bannissement) entraînera des mesures immédiates.</li>
+                    <li>Tout manquement à ces règles pourra entraîner un avertissement, une mise en sourdine (<em>mute</em>), une expulsion (<em>kick</em>) ou un bannissement selon la gravité.</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <i class="fas fa-smile"></i> Bon séjour parmi nous et amusez-vous bien sur PUB Québec !
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Section -->
+    <section id="recrutement" class="fade-in">
+        <h2 class="section-title">📢 Recrutement Staff</h2>
+        
+        <div class="recruitment">
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Le serveur <strong>PUB Québec</strong> est actuellement à la recherche de nouveaux talents pour rejoindre son équipe ! Vous souhaitez vous impliquer dans la communauté et nous aider à la faire grandir ? C'est le moment de tenter votre chance.
+            </p>
+
+            <h3 style="text-align: center; color: var(--rouge); margin-bottom: 1.5rem; font-size: 1.5rem;">
+                <i class="fas fa-thumbtack"></i> Postes recherchés :
+            </h3>
+
+            <div class="positions">
+                <div class="position-card">
+                    <h3><i class="fas fa-user-shield"></i> Modérateur(trice)</h3>
+                    <p>Veiller au respect des règles, maintenir un climat accueillant et gérer les litiges.</p>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h4><i class="fas fa-clipboard-check"></i> Prérequis :</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--rouge); margin-right: 0.5rem;"></i> Être actif(ve) et régulier(ère) sur le serveur.</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--rouge); margin-right: 0.5rem;"></i> Avoir un bon esprit d'équipe, faire preuve de maturité et d'impartialité.</li>
+                    <li><i class="fas fa-check" style="color: var(--rouge); margin-right: 0.5rem;"></i> Connaître un minimum le fonctionnement de Discord.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <h4 style="margin-bottom: 1rem;"><i class="fas fa-file-alt"></i> Comment postuler ?</h4>
+                <p style="margin-bottom: 1.5rem;">Pour déposer votre candidature, veuillez remplir le formulaire officiel via le lien ci-dessous :</p>
+                <a href="#" class="apply-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    Formulaire de Candidature
+                </a>
+                <p style="margin-top: 1.5rem; font-style: italic; color: var(--argent);">
+                    <i class="fas fa-star"></i> Bonne chance à tous les candidats ! L'équipe de PUB Québec vous remercie pour votre implication.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipe" class="team fade-in">
+        <h2 class="section-title">👥 Notre Équipe</h2>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://cdn.discordapp.com/avatars/1016479613297369139/c5fdeacb1aa0af3729f0833179532635.webp?size=1024" alt="Nathan">
+                <h3>Nathan</h3>
+                <p class="role">Fondateur</p>
+                <p class="username">@nathanbeliv</p>
+            </div>
+
+            <div class="team-member">
+                <img src="https://cdn.discordapp.com/avatars/1281784488854159421/608fbe0e316e417b5e83539ef8555255.webp?size=1024" alt="Jacobin Babouain">
+                <h3>Jacobin Babouain</h3>
+                <p class="role">Développeur Web</p>
+                <p class="username">@jacobin904</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="https://cdn.discordapp.com/icons/1529280563477872793/347f0d838eedfabeeb536d0e91609981.webp?size=1024" alt="PUB Québec" class="footer-logo">
+            <h2 style="margin-bottom: 1rem;">PUB QUÉBEC</h2>
+            <p style="color: var(--argent); margin-bottom: 2rem;">L'Authentique Expérience Québécoise</p>
+            
+            <div class="social-links">
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 PUB Québec. Tous droits réservés.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Site développé par Jacobin Babouain</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(0, 26, 77, 0.98)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '2rem';
+            navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+        });
+
+        // Active navigation highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#cc0000';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
