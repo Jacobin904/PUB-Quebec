@@ -101,8 +101,8 @@ client.on('messageCreate', async (message) => {
 
     // Gestion du salon d'information Booster
     if (message.channel.id === CONFIG.BOOSTER_INFO_CHANNEL_ID) {
-        // Supprime uniquement le message de la personne qui vient d'écrire
-        await message.delete().catch(() => {});
+        // Sauvegarder l'ID du message envoyé par l'utilisateur avant de l'effacer
+        const userMessageId = message.id;
 
         const boosterContent = `__## **Avantages Booster**__
 
@@ -114,17 +114,24 @@ client.on('messageCreate', async (message) => {
 * Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:`;
 
         try {
-            // Récupère les messages récents du salon pour trouver l'ancien message du bot
-            const fetchedMessages = await message.channel.messages.fetch({ limit: 20 });
-            // Trouve le tout premier message envoyé par le bot (le plus récent de sa part)
+            // Récupère les messages récents du salon
+            const fetchedMessages = await message.channel.messages.fetch({ limit: 10 });
+            
+            // Trouve l'ancien message du bot (le plus récent envoyé par le bot avant cette action, en excluant le message actuel de l'utilisateur s'il y a interférence)
             const previousBotMessage = fetchedMessages.find(msg => msg.author.id === client.user.id);
 
-            // Si un ancien message du bot existe, on le supprime
+            // Supprime uniquement l'ancien message du bot s'il existe
             if (previousBotMessage) {
                 await previousBotMessage.delete().catch(() => {});
             }
 
-            // Envoie le nouveau message
+            // Supprime le message que l'utilisateur vient d'écrire
+            const userMsgToDelete = await message.channel.messages.fetch(userMessageId).catch(() => null);
+            if (userMsgToDelete) {
+                await userMsgToDelete.delete().catch(() => {});
+            }
+
+            // Envoie le nouveau message unique du bot
             await message.channel.send({ content: boosterContent });
         } catch (err) {
             console.error('[BOT] Erreur lors de la gestion du salon booster :', err);
