@@ -1,4 +1,16 @@
 const { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionFlagsBits } = require('discord.js');
+const http = require('http');
+
+// Petit serveur HTTP pour satisfaire Render et garder le bot actif
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Bot Discord en ligne !\n');
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Serveur web en écoute sur le port ${PORT}`);
+});
 
 const client = new Client({
     intents: [
