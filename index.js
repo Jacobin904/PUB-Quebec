@@ -9,16 +9,13 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Autoriser les requêtes depuis ton futur site web
 app.use(cors());
 app.use(express.json());
 
-// Route de base (Health Check pour Render)
 app.get('/', (req, res) => {
     res.json({ status: 'online', message: 'API PUB Québec est active' });
 });
 
-// Route pour que le site web récupère le statut du bot
 app.get('/api/status', (req, res) => {
     res.json({
         online: client.isReady(),
@@ -27,7 +24,6 @@ app.get('/api/status', (req, res) => {
     });
 });
 
-// Route pour que le site web récupère les stats du serveur Discord
 app.get('/api/guild', (req, res) => {
     const guild = client.guilds.cache.first();
     if (!guild) return res.status(500).json({ error: 'Guild not found' });
@@ -40,7 +36,6 @@ app.get('/api/guild', (req, res) => {
     });
 });
 
-// Démarrage du serveur web
 app.listen(PORT, () => {
     console.log(`[WEB] Serveur API en écoute sur le port ${PORT}`);
 });
@@ -53,11 +48,10 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers // Nécessaire pour les stats et la détection des départs
+        GatewayIntentBits.GuildMembers
     ]
 });
 
-// IDs de configuration
 const CONFIG = {
     CHANNEL_ID: '1529282301891051620',
     CATEGORY_ID: '1529294134425423942',
@@ -67,7 +61,6 @@ const CONFIG = {
     BOOSTER_INFO_CHANNEL_ID: '1529505071224852621'
 };
 
-// Gestion des erreurs
 client.on('error', (error) => console.error('[BOT] Erreur client Discord :', error));
 process.on('unhandledRejection', error => console.error('[BOT] Promesse rejetée :', error));
 
@@ -76,15 +69,12 @@ client.once('ready', () => {
 });
 
 // ==========================================
-// 3. LOGIQUE DU BOT (Messages, Départ, Boosters & Tickets)
+// 3. LOGIQUE DU BOT
 // ==========================================
 
-// Suppression automatique des messages de pub si l'utilisateur quitte le serveur
 client.on('guildMemberRemove', async (member) => {
     try {
         const guild = member.guild;
-        
-        // Récupère tous les salons textuels appartenant aux catégories de pub surveillées
         const pubChannels = guild.channels.cache.filter(c => c.type === 0 && c.parentId && CONFIG.AD_CATEGORIES.includes(c.parentId));
 
         for (const [channelId, channel] of pubChannels) {
@@ -109,12 +99,11 @@ client.on('guildMemberRemove', async (member) => {
 client.on('messageCreate', async (message) => {
     if (message.author.bot || !message.guild) return;
 
-    // Gestion du salon d'information Booster (supprime l'ancien message du bot et en renvoie un nouveau)
+    // Gestion du salon d'information Booster
     if (message.channel.id === CONFIG.BOOSTER_INFO_CHANNEL_ID) {
-        // Supprime le message envoyé par l'utilisateur
+        // Supprime uniquement le message de la personne qui vient d'écrire
         await message.delete().catch(() => {});
 
-        // Texte des avantages booster demandé
         const boosterContent = `__## **Avantages Booster**__
 
 * Salon ou un bot envoie ta pub
@@ -125,15 +114,17 @@ client.on('messageCreate', async (message) => {
 * Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:`;
 
         try {
-            // Récupère l'historique du salon pour trouver et supprimer les anciens messages du bot
-            const fetchedMessages = await message.channel.messages.fetch({ limit: 50 });
-            const botMessages = fetchedMessages.filter(msg => msg.author.id === client.user.id);
-            
-            for (const [msgId, botMsg] of botMessages) {
-                await botMsg.delete().catch(() => {});
+            // Récupère les messages récents du salon pour trouver l'ancien message du bot
+            const fetchedMessages = await message.channel.messages.fetch({ limit: 20 });
+            // Trouve le tout premier message envoyé par le bot (le plus récent de sa part)
+            const previousBotMessage = fetchedMessages.find(msg => msg.author.id === client.user.id);
+
+            // Si un ancien message du bot existe, on le supprime
+            if (previousBotMessage) {
+                await previousBotMessage.delete().catch(() => {});
             }
 
-            // Envoie le nouveau message mis à jour
+            // Envoie le nouveau message
             await message.channel.send({ content: boosterContent });
         } catch (err) {
             console.error('[BOT] Erreur lors de la gestion du salon booster :', err);
@@ -191,7 +182,6 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// Gestion des interactions (Boutons)
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isButton()) return;
 
@@ -204,7 +194,7 @@ client.on('interactionCreate', async (interaction) => {
 
             const ticketChannel = await guild.channels.create({
                 name: `ticket-${user.username}`,
-                type: 0, // Channel type: GUILD_TEXT
+                type: 0,
                 parent: CONFIG.CATEGORY_ID,
                 permissionOverwrites: [
                     { id: guild.id, deny: [PermissionFlagsBits.ViewChannel] },
@@ -251,7 +241,6 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-// Fonction utilitaire pour formater l'uptime
 function formatUptime(ms) {
     const seconds = Math.floor((ms / 1000) % 60);
     const minutes = Math.floor((ms / (1000 * 60)) % 60);
@@ -260,5 +249,4 @@ function formatUptime(ms) {
     return `${days}j ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Connexion du bot Discord
 client.login(process.env.DISCORD_TOKEN);
