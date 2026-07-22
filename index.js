@@ -30,7 +30,44 @@ client.once('ready', () => {
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    // Commande !support réservée aux administrateurs
+    // 1. Commande !id pour lister les salons et les rôles
+    if (message.content === '!id') {
+        if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
+            return message.reply({ content: "Vous n'avez pas la permission d'utiliser cette commande.", ephemeral: true });
+        }
+
+        await message.delete().catch(() => {});
+
+        const guild = message.guild;
+
+        // Récupère tous les salons
+        const channels = guild.channels.cache.map(c => `• **${c.name}** : \`${c.id}\``).join('\n') || 'Aucun salon';
+        
+        // Récupère tous les rôles
+        const roles = guild.roles.cache.map(r => `• **${r.name}** : \`${r.id}\``).join('\n') || 'Aucun rôle';
+
+        // Envoi par message privé (DM) pour éviter de spammer le salon car la liste peut être longue
+        try {
+            const embedChannels = new EmbedBuilder()
+                .setTitle('📋 Liste des Salons - PUB Québec')
+                .setDescription(channels.length > 4096 ? channels.substring(0, 4093) + '...' : channels)
+                .setColor(EMBED_COLOR);
+
+            const embedRoles = new EmbedBuilder()
+                .setTitle('🔑 Liste des Rôles - PUB Québec')
+                .setDescription(roles.length > 4096 ? roles.substring(0, 4093) + '...' : roles)
+                .setColor(EMBED_COLOR);
+
+            await message.author.send({ embeds: [embedChannels, embedRoles] });
+            return message.channel.send({ content: "Les listes des ID des salons et rôles vous ont été envoyées en message privé !", ephemeral: true }).then(msg => {
+                setTimeout(() => msg.delete().catch(() => {}), 5000);
+            });
+        } catch (err) {
+            return message.reply({ content: "Impossible de vous envoyer un message privé. Veuillez ouvrir vos DM.", ephemeral: true });
+        }
+    }
+
+    // 2. Commande !support réservée aux administrateurs
     if (message.content === '!support') {
         if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
             return message.reply({ content: "Vous n'avez pas la permission d'utiliser cette commande.", ephemeral: true });
