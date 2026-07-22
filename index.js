@@ -53,7 +53,7 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers // Nécessaire pour les stats sur le site
+        GatewayIntentBits.GuildMembers // Nécessaire pour les stats et la détection des départs
     ]
 });
 
@@ -75,8 +75,36 @@ client.once('ready', () => {
 });
 
 // ==========================================
-// 3. LOGIQUE DU BOT (Messages & Tickets)
+// 3. LOGIQUE DU BOT (Messages, Départ & Tickets)
 // ==========================================
+
+// Suppression automatique des messages de pub si l'utilisateur quitte le serveur
+client.on('guildMemberRemove', async (member) => {
+    try {
+        const guild = member.guild;
+        
+        // Récupère tous les salons textuels appartenant aux catégories de pub surveillées
+        const pubChannels = guild.channels.cache.filter(c => c.type === 0 && c.parentId && CONFIG.AD_CATEGORIES.includes(c.parentId));
+
+        for (const [channelId, channel] of pubChannels) {
+            try {
+                const messages = await channel.messages.fetch({ limit: 100 });
+                const userMessages = messages.filter(msg => msg.author.id === member.id);
+
+                if (userMessages.size > 0) {
+                    await channel.bulkDelete(userMessages, true).catch(() => {
+                        userMessages.forEach(msg => msg.delete().catch(() => {}));
+                    });
+                }
+            } catch (err) {
+                console.error(`[BOT] Erreur lors du nettoyage dans le salon ${channel.name}:`, err);
+            }
+        }
+    } catch (error) {
+        console.error('[BOT] Erreur lors du traitement du départ d\'un membre :', error);
+    }
+});
+
 client.on('messageCreate', async (message) => {
     if (message.author.bot || !message.guild) return;
 
@@ -199,5 +227,5 @@ function formatUptime(ms) {
     return `${days}j ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Connexion au bot
+// Connexion du bot Discord
 client.login(process.env.DISCORD_TOKEN);
