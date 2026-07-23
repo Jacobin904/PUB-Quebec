@@ -108,7 +108,9 @@ client.on('messageCreate', async (message) => {
 * Accès à un salon textuel et vocal exclusif réservé aux soutiens du serveur :lock:
 * Possibilité d'ajouter un émoji personnalisé de ton choix sur le serveur :sparkles:
 * Immunité contre certains ralentissements (*slowmode*) dans les salons textuels :zap:
-* Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:`;
+* Double de chances lors de nos *giveaways* et concours organisés sur le serveur :gift:
+* Acces au soundBoard :loud_sound:
+`;
 
         try {
             // NOTE : On NE touche PAS à ton message (pas de message.delete ici)
